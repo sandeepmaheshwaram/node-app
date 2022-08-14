@@ -20,6 +20,8 @@ phases:
       - echo Build completed on `date`
       - echo Pushing the Docker images...
       - echo Writing image definitions file...
+      - docker push $REPOSITORY_URI:latest
+      - docker push $REPOSITORY_URI:$IMAGE_TAG
       - printf '[{"name":"nodeapp","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
       - cat imagedefinitions.json 
 artifacts:
